@@ -1,3 +1,3 @@
 [submodule "lib/symfony"]
 	path = lib/symfony
-	url = git://github.com/symfony/symfony.git
+	url = git://github.com/phpbb/symfony.git
