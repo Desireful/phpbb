@@ -33,7 +33,6 @@ This template of the header must be included at the beginning of all phpBB files
     * along with this program.  If not, see <http://www.gnu.org/licenses/>.
     *
     * @package   <PACKAGENAME>
-    * @author    AUTHORNAME <AUTHOREMAIL>
     * @copyright 2010 phpBB Ltd.
     * @license   http://www.gnu.org/licenses/gpl.txt
     *            GNU General Public License
@@ -42,12 +41,7 @@ This template of the header must be included at the beginning of all phpBB files
 
 The macro `@package_version@` is automatically replaced when generating documentation. The `PACKAGENAME` depends on what part of phpBB this file belongs to, more on this can be found in the directory structure document. The default package name is `phpBB`.
 
-If the file has been edited by multiple authors they should be listed like this (contributions should be significant: at least more than 5 lines of code, excluding comments, brackets etc.):
-
-    * @author    AUTHOR1 <MAIL1>
-    * @author    AUTHOR2 <MAIL2>
-
-If an author has not signed a Fiduciary License Agreement and does not intend to do so he needs to be listed in the copyright notice, too.
+If an author has not signed a Fiduciary License Agreement (FLA) and does not intend to do so he needs to be listed in the copyright notice, too. This is only an option if the person has only contributed to a very small number of files. It does however require at least one significant contribution to the file (not a one line bug fix). The author will not separately be listed in the AUTHORS file listing all contributors who have signed the FLA.
 
     * @copyright 2010 phpBB Ltd.
     *            2010 AUTHORNAME
@@ -68,7 +62,7 @@ In these files you have to place an empty comment directly after the header to p
     {CODE}
 
 ## Files containing only classes or functions
-Every class and method or function must be preceded by a docblock documenting with at least one sentence what it does, all of its parameters the return value and respectively their types. If the function does not return a value the type should be specified as `void`. Classes require that you specify an `@package` annotation, it is the same as the header package name. Classes should also document their authors - see the section on Comments. Additional documentation is optional.
+Every class and method or function must be preceded by a docblock documenting with at least one sentence what it does, all of its parameters the return value and respectively their types. If the function does not return a value the type should be specified as `void`. Classes require that you specify an `@package` annotation, it is the same as the header package name. Additional documentation is optional.
 
 ## Code following the header but otherwise only classes or functions
 The best method to avoid documentation confusions in this case is adding an ignore command, for example:
@@ -291,8 +285,6 @@ Right:
 Every class, method and function must be preceded by a docblock that tells a programmer everything they need to know to use it. The meaning of every parameter, the expected input, and the output are required as a minimal comment. The function's behaviour in error conditions (and what those error conditions are) should also be present.
 
 Especially important to document are any assumptions the code makes, or preconditions for its proper operation. Any one of the developers should be able to look at any part of the application and figure out what's going on in a reasonable amount of time.
-
-For classes all authors with significant contributions (at least more than 5 lines of code, excluding comments, brackets etc.) should be listed with `@author` annotations as in the file header. If a person has made contributed one method but has not made other significant changes he should only add an `@author` annotation to that method (and the file header). This does not apply if the method has multiple authors.
 
 Avoid using `/* */` comment blocks for one-line comments, `//` should be used for one/two-liners.
 
