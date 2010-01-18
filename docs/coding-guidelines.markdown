@@ -9,6 +9,9 @@ Ensure that your editor is saving files in the UNIX (LF) line ending format. Thi
 ## Trailing Spaces
 There should not be any whitespace in the end of a line. If your editor has an option to auomatically delete such whitespace, turn it on.
 
+## End of File
+The last line of the file should end with a line feed (LF).
+
 # File Header
 
 ## Standard File Header
