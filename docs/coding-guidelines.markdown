@@ -16,49 +16,49 @@ This template of the header must be included at the beginning of all phpBB files
 
     <?php
     /**
-    * This file is part of phpBB
-    *
-    * This program is free software: you can redistribute it and/or modify
-    * it under the terms of the GNU General Public License as published by
-    * the Free Software Foundation, either version 3 of the License, or
-    * any later version accepted by phpBB Ltd. in accordance with section
-    * 14 of the GNU General Public License.
-    *
-    * This program is distributed in the hope that it will be useful,
-    * but WITHOUT ANY WARRANTY; without even the implied warranty of
-    * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    * GNU General Public License for more details.
-    *
-    * You should have received a copy of the GNU General Public License
-    * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-    *
-    * @package   <PACKAGENAME>
-    * @copyright 2010 phpBB Ltd.
-    * @license   http://www.gnu.org/licenses/gpl.txt
-    *            GNU General Public License
-    * @version   Release: @package_version@
-    */
+     * This file is part of phpBB
+     *
+     * This program is free software: you can redistribute it and/or modify
+     * it under the terms of the GNU General Public License as published by
+     * the Free Software Foundation, either version 3 of the License, or
+     * any later version accepted by phpBB Ltd. in accordance with section
+     * 14 of the GNU General Public License.
+     *
+     * This program is distributed in the hope that it will be useful,
+     * but WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+     * GNU General Public License for more details.
+     *
+     * You should have received a copy of the GNU General Public License
+     * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+     *
+     * @package   <PACKAGENAME>
+     * @copyright 2010 phpBB Ltd.
+     * @license   http://www.gnu.org/licenses/gpl.txt
+     *            GNU General Public License
+     * @version   Release: @package_version@
+     */
 
 The macro `@package_version@` is automatically replaced when generating documentation. The `PACKAGENAME` depends on what part of phpBB this file belongs to, more on this can be found in the directory structure document. The default package name is `phpBB`.
 
 If an author has not signed a Fiduciary License Agreement (FLA) and does not intend to do so he needs to be listed in the copyright notice, too. This is only an option if the person has only contributed to a very small number of files. It does however require at least one significant contribution to the file (not a one line bug fix). The author will not separately be listed in the AUTHORS file listing all contributors who have signed the FLA.
 
-    * @copyright 2010 phpBB Ltd.
-    *            2010 AUTHORNAME
+     * @copyright 2010 phpBB Ltd.
+     * @copyright 2010 AUTHORNAME
 
 Or if he is the only author:
 
-    * @copyright 2010 AUTHORNAME
+     * @copyright 2010 AUTHORNAME
 
 ## Files containing inline code
 In these files you have to place an empty comment directly after the header to prevent the documentor from assigning the header to the first code element found.
 
     /**
-    * {HEADER}
-    */
+     * {HEADER}
+     */
 
     /**
-    */
+     */
     {CODE}
 
 ## Files containing only classes or functions
@@ -68,17 +68,17 @@ Every class and method or function must be preceded by a docblock documenting wi
 The best method to avoid documentation confusions in this case is adding an ignore command, for example:
 
     /**
-    * {HEADER}
-    */
+     * {HEADER}
+     */
 
     /**
-    * @ignore
-    */
+     * @ignore
+     */
     Small code snipped, mostly one or two defines or an if statement
 
     /**
-    * {DOCUMENTATION}
-    */
+     * {DOCUMENTATION}
+     */
     class ...
 
 # File Footer
@@ -125,8 +125,8 @@ All files in the phpBB library need to begin with a namespace declaration matchi
     namespace phpBB\Session;
 
     /**
-    * StorageInterface comment.
-    */
+     * StorageInterface comment.
+     */
     interface StorageInterface
     {
 
@@ -213,7 +213,7 @@ Each pair shows the wrong way followed by the right way.
     if ($i < 7) ...
 
     if ( ($i < 7)&&($j > 8) ) ...
-    if ($i < 7 &&; $j > 8) ...
+    if ($i < 7 && $j > 8) ...
 
     doStuff( $i, 'foo', $b );
     doStuff($i, 'foo', $b);
@@ -291,11 +291,11 @@ Avoid using `/* */` comment blocks for one-line comments, `//` should be used fo
 Example:
 
     /**
-    * Returns the first character of the given string.
-    *
-    * @param    string $string  An arbitrary string
-    * @return   string          Single character
-    */
+     * Returns the first character of the given string.
+     *
+     * @param    string $string  An arbitrary string
+     * @return   string          Single character
+     */
     function firstCharacter($text)
     {
         // the first character is at index 0
@@ -323,7 +323,7 @@ Right:
     function parseFiles(ParserInterface $parser, array $files);
 
 ### Magic Numbers
-Don't use them. Use named constants for any literal value other than obvious special cases. Basically, it's ok to check if an array has 0 elements by using the literal 0. It's not ok to assign some special meaning to a number and then use it everywhere as a literal. This hurts readability AND maintainability. The constants `true` and `false` should be used in place of the literals 1 and 0 -- even though they have the same values (but not type!), it's more obvious what the actual logic is when you use the named constants.
+Don't use them. Use named constants for any literal value other than obvious special cases. Basically, it's ok to check if an array has 1 element by using the literal 1. It's not ok to assign some special meaning to a number and then use it everywhere as a literal. This hurts readability AND maintainability. The constants `true` and `false` should be used in place of the literals 1 and 0 -- even though they have the same values (but not type!), it's more obvious what the actual logic is when you use the named constants.
 
 ### Shortcut operators
 The only shortcut operators that cause readability problems are the shortcut increment `$i++` and decrement `$j--` operators. These operators should not be used as part of an expression. They can, however, be used on their own line. Using them in expressions is just not worth the headaches when debugging, examples:
@@ -480,6 +480,7 @@ Some of these choices are arbitrary and have no benefit other than to be consist
 * Use `else if` instead of `elseif`.
 * Use `false` (lowercase) instead of `FALSE`.
 * Use `true` (lowercase) instead of `TRUE`.
+* Use `null` (lowercase) instead of `NULL`.
 
 # Character Sets and Encodings
 
