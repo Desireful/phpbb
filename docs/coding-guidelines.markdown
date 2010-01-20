@@ -89,7 +89,7 @@ PHP files should not be closed with a closing PHP tag (`?>`) to avoid issues wit
 *****
 
 # Code Structure & Style
-Please note that these Guidelines applies to all php, html, javascript and css files as far as that makes sense for the language.
+Please note that these Guidelines applies to all PHP, HTML, Javascript and CSS files as far as that makes sense for the language.
 
 ## Naming Conventions
 We use camel-case for all identifiers but constants. When using an abbreviation you should use multiple upper-case characters, e.g. `someDOMFunction`. We do not use any form of hungarian notation in our naming conventions. Many of us believe that hungarian naming is one of the primary code obfuscation techniques currently in use.
