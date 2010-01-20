@@ -6,10 +6,11 @@ Use **spaces, not tabs**. We indent with four spaces, setup your editor accordin
 ## Line Breaks
 Ensure that your editor is saving files in the UNIX (LF) line ending format. This means that lines are terminated with a newline, not with Windows Line endings (CR/LF combo) as they are on Windows or Classic Mac (CR) Line endings. Any decent editor should be able to do this, but it might not always be the default setting. Know your editor. If you want advice on an editor for your Operating System, just ask one of the developers. Some of them do their editing on Windows.
 
-Every file should end in a newline, meaning with an empty line. This is necessary so that appending a line will not mark the previous line as changed in a diff for the addition of a newline character.
-
 ## Trailing Spaces
 There should not be any whitespace in the end of a line. If your editor has an option to auomatically delete such whitespace, turn it on.
+
+## End of File
+The last line of the file should end with a line feed (LF), meaning it ends with an empty line. This is necessary so that appending a line will not mark the previous line as changed in a diff for the addition of a newline character.
 
 # File Header
 
