@@ -5,13 +5,13 @@ In order to make this as simple as possible, we will be using **tabs, not spaces
 
 Tabs in front of lines cause no problems. Tabs in the middle of a line can be a problem if you have not set your tab width to four, the amount of spaces every one of us uses. Here is a short example of what it should look like:
 
-	{TAB}$mode{TAB}{TAB}= request_var('mode', '');
-	{TAB}$search_id{TAB}= request_var('search_id', '');
+	{TAB}$mode{TAB}{TAB}= request('mode', '');
+	{TAB}$search_id{TAB}= request('search_id', '');
 
 If you replace {TAB} with actual tabs and they are displayed correctly both equal signs need to be on the same column:
 
-	____$mode_______= request_var('mode', '');
-	____$search_id__= request_var('search_id', '');
+	____$mode_______= request('mode', '');
+	____$search_id__= request('search_id', '');
 
 ## Line Breaks
 Ensure that your editor is saving files in the UNIX (LF) line ending format. This means that lines are terminated with a newline, not with Windows Line endings (CR/LF combo) as they are on Windows or Classic Mac (CR) Line endings. Any decent editor should be able to do this, but it might not always be the default setting. Know your editor. If you want advice on an editor for your Operating System, just ask one of the developers. Some of them do their editing on Windows.
@@ -269,30 +269,30 @@ Right:
 
 Sometimes single quotes are just not right
 
-	$post_url = $phpbb_root_path . 'posting.' . $phpEx . '?mode=' . $mode . '&amp;start=' . $start;
+	$postUrl = $phpBBRootPath . 'posting.' . $phpEx . '?mode=' . $mode . '&amp;start=' . $start;
 
 Double quotes are sometimes needed to not overcroud the line with concentinations
 
-	$post_url = "{$phpbb_root_path}posting.$phpEx?mode=$mode&amp;start=$start";
+	$postUrl = "{$phpBBRootPath}posting.$phpEx?mode=$mode&amp;start=$start";
 
 ### Associative array keys
 In PHP, it's legal to use a literal string as a key to an associative array without quoting that string. We don't want to do this -- the string should always be quoted to avoid confusion. Note that this is only when we're using a literal, not when we're using a variable, examples:</p>
 
 Wrong:
 
-	$foo = $assoc_array[blah];
+	$foo = $assocArray[blah];
 
 Right:
 
-	$foo = $assoc_array['blah'];
+	$foo = $assocArray['blah'];
 
 Wrong:
 
-	$foo = $assoc_array["$var"];
+	$foo = $assocArray["$var"];
 
 Right:
 
-	$foo = $assoc_array[$var];
+	$foo = $assocArray[$var];
 
 ### Comments
 Every class, method and function must be preceded by a docblock that tells a programmer everything they need to know to use it. The meaning of every parameter, the expected input, and the output are required as a minimal comment. The function's behaviour in error conditions (and what those error conditions are) should also be present.
