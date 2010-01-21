@@ -1,7 +1,17 @@
 # Editor Settings
 
 ## Tabs vs Spaces
-Use **spaces, not tabs**. We indent with four spaces, setup your editor accordingly. Make sure that when you **save** the file, it's saving spaces and not tabs. This way the files are going to look exactly the same for everyone regardless of their editor settings.
+In order to make this as simple as possible, we will be using **tabs, not spaces**. You need to set your tab width, the amount of spaces a tab is displayed with, four (4) spaces in your editor. Make sure that when you **save** the file, it saves tabs and not spaces.
+
+Tabs in front of lines cause no problems. Tabs in the middle of a line can be a problem if you have not set your tab width to four, the amount of spaces every one of us uses. Here is a short example of what it should look like:
+
+	{TAB}$mode{TAB}{TAB}= request_var('mode', '');
+	{TAB}$search_id{TAB}= request_var('search_id', '');
+
+If you replace {TAB} with actual tabs and they are displayed correctly both equal signs need to be on the same column:
+
+	____$mode_______= request_var('mode', '');
+	____$search_id__= request_var('search_id', '');
 
 ## Line Breaks
 Ensure that your editor is saving files in the UNIX (LF) line ending format. This means that lines are terminated with a newline, not with Windows Line endings (CR/LF combo) as they are on Windows or Classic Mac (CR) Line endings. Any decent editor should be able to do this, but it might not always be the default setting. Know your editor. If you want advice on an editor for your Operating System, just ask one of the developers. Some of them do their editing on Windows.
@@ -17,52 +27,52 @@ The last line of the file should end with a line feed (LF), meaning it ends with
 ## Standard File Header
 This template of the header must be included at the beginning of all phpBB files:
 
-    <?php
-    /**
-     * This file is part of phpBB
-     *
-     * This program is free software: you can redistribute it and/or modify
-     * it under the terms of the GNU General Public License as published by
-     * the Free Software Foundation, either version 3 of the License, or
-     * any later version accepted by phpBB Ltd. in accordance with section
-     * 14 of the GNU General Public License.
-     *
-     * This program is distributed in the hope that it will be useful,
-     * but WITHOUT ANY WARRANTY; without even the implied warranty of
-     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-     * GNU General Public License for more details.
-     *
-     * You should have received a copy of the GNU General Public License
-     * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-     *
-     * @package   <PACKAGENAME>
-     * @copyright 2010 phpBB Ltd.
-     * @license   http://www.gnu.org/licenses/gpl.txt
-     *            GNU General Public License
-     * @version   Release: @package_version@
-     */
+	<?php
+	/**
+	 * This file is part of phpBB
+	 *
+	 * This program is free software: you can redistribute it and/or modify
+	 * it under the terms of the GNU General Public License as published by
+	 * the Free Software Foundation, either version 3 of the License, or
+	 * any later version accepted by phpBB Ltd. in accordance with section
+	 * 14 of the GNU General Public License.
+	 *
+	 * This program is distributed in the hope that it will be useful,
+	 * but WITHOUT ANY WARRANTY; without even the implied warranty of
+	 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	 * GNU General Public License for more details.
+	 *
+	 * You should have received a copy of the GNU General Public License
+	 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+	 *
+	 * @package   <PACKAGENAME>
+	 * @copyright 2010 phpBB Ltd.
+	 * @license   http://www.gnu.org/licenses/gpl.txt
+	 *            GNU General Public License
+	 * @version   Release: @package_version@
+	 */
 
 The macro `@package_version@` is automatically replaced when generating documentation. The `PACKAGENAME` depends on what part of phpBB this file belongs to, more on this can be found in the directory structure document. The default package name is `phpBB`.
 
 If an author has not signed a Fiduciary License Agreement (FLA) and does not intend to do so he needs to be listed in the copyright notice, too. This is only an option if the person has only contributed to a very small number of files. It does however require at least one significant contribution to the file (not a one line bug fix). The author will not separately be listed in the AUTHORS file listing all contributors who have signed the FLA.
 
-     * @copyright 2010 phpBB Ltd.
-     * @copyright 2010 AUTHORNAME
+	 * @copyright 2010 phpBB Ltd.
+	 * @copyright 2010 AUTHORNAME
 
 Or if he is the only author:
 
-     * @copyright 2010 AUTHORNAME
+	 * @copyright 2010 AUTHORNAME
 
 ## Files containing inline code
 In these files you have to place an empty comment directly after the header to prevent the documentor from assigning the header to the first code element found.
 
-    /**
-     * {HEADER}
-     */
+	/**
+	 * {HEADER}
+	 */
 
-    /**
-     */
-    {CODE}
+	/**
+	 */
+	{CODE}
 
 ## Files containing only classes or functions
 Every class and method or function must be preceded by a docblock documenting with at least one sentence what it does, all of its parameters the return value and respectively their types. If the function does not return a value the type should be specified as `void`. Classes require that you specify an `@package` annotation, it is the same as the header package name. Additional documentation is optional.
@@ -70,19 +80,19 @@ Every class and method or function must be preceded by a docblock documenting wi
 ## Code following the header but otherwise only classes or functions
 The best method to avoid documentation confusions in this case is adding an ignore command, for example:
 
-    /**
-     * {HEADER}
-     */
+	/**
+	 * {HEADER}
+	 */
 
-    /**
-     * @ignore
-     */
-    Small code snipped, mostly one or two defines or an if statement
+	/**
+	 * @ignore
+	 */
+	Small code snipped, mostly one or two defines or an if statement
 
-    /**
-     * {DOCUMENTATION}
-     */
-    class ...
+	/**
+	 * {DOCUMENTATION}
+	 */
+	class ...
 
 # File Footer
 PHP files should not be closed with a closing PHP tag (`?>`) to avoid issues with whitespace inserted after it.
@@ -105,13 +115,13 @@ Names should be descriptive, but concise. We don't want huge sentences as our va
 ### Loop Indices
 The *only* situation where a one-character variable name is allowed is when it's the index for some looping construct. In this case, the index of the outer loop should always be $i. If there's a loop inside that loop, its index should be $j, followed by $k, and so on. If the loop is being indexed by some already-existing variable with a meaningful name, this guideline does not apply, example:
 
-    for ($i = 0; $i < $outerSize; $i++)
-    {
-        for ($j = 0; $j < $innerSize; $j++)
-        {
-            foo($i, $j);
-        }
-    }
+	for ($i = 0; $i < $outerSize; $i++)
+	{
+		for ($j = 0; $j < $innerSize; $j++)
+		{
+			foo($i, $j);
+		}
+	}
 
 ### Method & Function Names
 Functions should also be named descriptively. We're not programming in C here, we don't want to write functions called things like `stristr()`. Again, always begin with lower case character, words start with a single upper-case character, the rest lower-case. Function names should preferably have a verb in them somewhere. Good method names are `printLoginStatus()`, `getUserData()`, etc.
@@ -125,13 +135,13 @@ There should only be one class or interface in one file. The filename should be 
 ### Namespaces
 All files in the phpBB library need to begin with a namespace declaration matching their path. For example `lib/phpBB/Session/StorageInterface.php` would begin with the following after the file header:
 
-    namespace phpBB\Session;
+	namespace phpBB\Session;
 
-    /**
-     * StorageInterface comment.
-     */
-    interface StorageInterface
-    {
+	/**
+	* StorageInterface comment.
+	*/
+	interface StorageInterface
+	{
 
 ### Summary
 The basic philosophy here is to not hurt code clarity for the sake of laziness. This has to be balanced by a little bit of common sense, though; `printLoginStatusForAGivenUser()` goes too far, for example -- that function would be better named `printUserLoginStatus()`, or just `print_login_status()`.
@@ -146,101 +156,101 @@ This is another case of being too lazy to type 2 extra characters causing proble
 
 These are all wrong:
 
-    if (condition) doStuff(); // Wrong
+	if (condition) doStuff(); // Wrong
 
-    if (condition) // Wrong
-        doStuff();
+	if (condition) // Wrong
+		doStuff();
 
-    while (condition) // Wrong
-        doStuff();
+	while (condition) // Wrong
+		doStuff();
 
-    for ($i = 0; $i < size; $i++) // Wrong
-        doStuff($i);
+	for ($i = 0; $i < size; $i++) // Wrong
+		doStuff($i);
 
 These are all right:
 
-    if (condition) // Right
-    {
-        doStuff();
-    }
+	if (condition) // Right
+	{
+		doStuff();
+	}
 
-    while (condition) // Right
-    {
-        doStuff();
-    }
+	while (condition) // Right
+	{
+		doStuff();
+	}
 
-    for ($i = 0; $i < size; $i++) // Right
-    {
-        doStuff();
-    }
+	for ($i = 0; $i < size; $i++) // Right
+	{
+		doStuff();
+	}
 
 ### Where to put the braces
 This one is a bit of a holy war, but we're going to use a style that can be summed up in one sentence: Braces always go on their own line. The closing brace should also always be at the same column as the corresponding opening brace, examples:
 
-    if (condition)
-    {
-        while (condition2)
-        {
-            ...
-        }
-    }
-    else
-    {
-        ...
-    }
+	if (condition)
+	{
+		while (condition2)
+		{
+			...
+		}
+	}
+	else
+	{
+		...
+	}
 
-    for ($i = 0; $i < $size; $i++)
-    {
-        ...
-    }
+	for ($i = 0; $i < $size; $i++)
+	{
+		...
+	}
 
-    while (condition)
-    {
-        ...
-    }
+	while (condition)
+	{
+		...
+	}
 
-    function doStuff()
-    {
-        ...
-    }
+	function doStuff()
+	{
+		...
+	}
 
 ### Use spaces between tokens
 This is another simple, easy step that helps keep code readable without much effort. Whenever you write an assignment, expression, etc.. Always leave *one* space between the tokens. Basically, write code as if it was English. Put spaces between variable names and operators. Don't put spaces just after an opening bracket or before a closing bracket. Don't put spaces just before a comma or a semicolon. This is best shown with a few examples, examples:</p>
 
 Each pair shows the wrong way followed by the right way.
 
-    $i=0;
-    $i = 0;
+	$i=0;
+	$i = 0;
 
-    if($i<7) ...
-    if ($i < 7) ...
+	if($i<7) ...
+	if ($i < 7) ...
 
-    if ( ($i < 7)&&($j > 8) ) ...
-    if ($i < 7 && $j > 8) ...
+	if ( ($i < 7)&&($j > 8) ) ...
+	if ($i < 7 && $j > 8) ...
 
-    doStuff( $i, 'foo', $b );
-    doStuff($i, 'foo', $b);
+	doStuff( $i, 'foo', $b );
+	doStuff($i, 'foo', $b);
 
-    for($i=0; $i<$size; $i++) ...
-    for ($i = 0; $i < $size; $i++) ...
+	for($i=0; $i<$size; $i++) ...
+	for ($i = 0; $i < $size; $i++) ...
 
-    $i=($j < $size)?0:1;
-    $i = ($j < $size) ? 0 : 1;
+	$i=($j < $size)?0:1;
+	$i = ($j < $size) ? 0 : 1;
 
 ### Operator precedence
 Do you know the exact precedence of all the operators in PHP? Neither do I. Don't guess. Always make it obvious by using brackets to force the precedence of an equation so you know what it does. Remember to not over-use this, as it may harden the readability. Basically, do not enclose single expressions. Examples:
 
 What's the result? Who knows.
 
-    $bool = ($i < 7 && $j > 8 || $k == 4); // Bad
+	$bool = ($i < 7 && $j > 8 || $k == 4); // Bad
 
 Now you can be certain what I'm doing here.
 
-    $bool = ((($i < 7) && ($j < 8)) || ($k == 4));
+	$bool = ((($i < 7) && ($j < 8)) || ($k == 4));
 
 But this one is even better, because it is easier on the eye but the intention is preserved.
 
-    $bool = (($i < 7 && $j < 8) || $k == 4);
+	$bool = (($i < 7 && $j < 8) || $k == 4);
 
 ### Quoting strings
 There are two different ways to quote strings in PHP - either with single quotes or with double quotes. The main difference is that the parser does variable interpolation in double-quoted strings, but not in single quoted strings. Because of this, you should *always* use single quotes *unless* you specifically need variable interpolation to be done on that string.
@@ -249,40 +259,40 @@ Also, if you are using a string variable as part of a function call, you do not 
 
 Wrong:
 
-    $string = "This is a really long string with no variables.";
-    doStuff("$string");
+	$string = "This is a really long string with no variables.";
+	doStuff("$string");
 
 Right:
 
-    $string = 'This is a really long string with no variables.';
-    doStuff($string);
+	$string = 'This is a really long string with no variables.';
+	doStuff($string);
 
 Sometimes single quotes are just not right
 
-    $post_url = $phpbb_root_path . 'posting.' . $phpEx . '?mode=' . $mode . '&amp;start=' . $start;
+	$post_url = $phpbb_root_path . 'posting.' . $phpEx . '?mode=' . $mode . '&amp;start=' . $start;
 
 Double quotes are sometimes needed to not overcroud the line with concentinations
 
-    $post_url = "{$phpbb_root_path}posting.$phpEx?mode=$mode&amp;start=$start";
+	$post_url = "{$phpbb_root_path}posting.$phpEx?mode=$mode&amp;start=$start";
 
 ### Associative array keys
 In PHP, it's legal to use a literal string as a key to an associative array without quoting that string. We don't want to do this -- the string should always be quoted to avoid confusion. Note that this is only when we're using a literal, not when we're using a variable, examples:</p>
 
 Wrong:
 
-    $foo = $assoc_array[blah];
+	$foo = $assoc_array[blah];
 
 Right:
 
-    $foo = $assoc_array['blah'];
+	$foo = $assoc_array['blah'];
 
 Wrong:
 
-    $foo = $assoc_array["$var"];
+	$foo = $assoc_array["$var"];
 
 Right:
 
-    $foo = $assoc_array[$var];
+	$foo = $assoc_array[$var];
 
 ### Comments
 Every class, method and function must be preceded by a docblock that tells a programmer everything they need to know to use it. The meaning of every parameter, the expected input, and the output are required as a minimal comment. The function's behaviour in error conditions (and what those error conditions are) should also be present.
@@ -293,37 +303,37 @@ Avoid using `/* */` comment blocks for one-line comments, `//` should be used fo
 
 Example:
 
-    /**
-     * Returns the first character of the given string.
-     *
-     * @param    string $string  An arbitrary string
-     * @return   string          Single character
-     */
-    function firstCharacter($text)
-    {
-        // the first character is at index 0
-        return $text[0];
-    }
+	/**
+	 * Returns the first character of the given string.
+	 *
+	 * @param    string $string  An arbitrary string
+	 * @return   string          Single character
+	 */
+	function firstCharacter($text)
+	{
+		// the first character is at index 0
+		return $text[0];
+	}
 
 ### Typecasting
 Typecast variables where it is needed, do not rely on the correct variable type (PHP is currently very loose on typecasting which can lead to security problems if a developer does not have a very close eye to it). Never use the same variable with two different types.
 
 Wrong:
-    $input = (int) $input;
+	$input = (int) $input;
 
 Right:
-    $number = (int) $input;
+	$number = (int) $input;
 
 ### Type Hinting
 Make use of type hinting in method declarations whenever you can. Type hinting should be used for object and array parameters. Try to always use an interface for type hinting rather than a concrete class.
 
 Wrong:
 
-    function parseFiles(MyParserClass $parser, $files);
+	function parseFiles(MyParserClass $parser, $files);
 
 Right:
 
-    function parseFiles(ParserInterface $parser, array $files);
+	function parseFiles(ParserInterface $parser, array $files);
 
 ### Magic Numbers
 Don't use them. Use named constants for any literal value other than obvious special cases. Basically, it's ok to check if an array has 1 element by using the literal 1. It's not ok to assign some special meaning to a number and then use it everywhere as a literal. This hurts readability AND maintainability. The constants `true` and `false` should be used in place of the literals 1 and 0 -- even though they have the same values (but not type!), it's more obvious what the actual logic is when you use the named constants.
@@ -333,37 +343,37 @@ The only shortcut operators that cause readability problems are the shortcut inc
 
 Wrong:
 
-    $array[++$i] = $j;
-    $array[$i++] = $k;
+	$array[++$i] = $j;
+	$array[$i++] = $k;
 
 Right:
-    $i++;
-    $array[$i] = $j;
+	$i++;
+	$array[$i] = $j;
 
-    $array[$i] = $k;
-    $i++;
+	$array[$i] = $k;
+	$i++;
 
 ### Inline conditionals
 Inline conditionals should only be used to do very simple things. Preferably, they will only be used to do assignments, and not for function calls or anything complex at all. They can be harmful to readability if used incorrectly, so don't fall in love with saving typing by using them, examples:
 
 Bad place to use them:
 
-    ($i < $size && $j > $size) ? doStuff($foo) : doStuff($bar);
+	($i < $size && $j > $size) ? doStuff($foo) : doStuff($bar);
 
 Good place to use them
 
-    $min = ($i < $j) ? $i : $j;
+	$min = ($i < $j) ? $i : $j;
 
 ### Never use uninitialised variable
 Develop with the highest level of run-time error reporting. This will report the use of an uninitialized variables as a notice. These notices can be avoided by using the built-in isset() function to check whether a variable has been set - but preferably the variable is always initialised. For checking if an array has a key set this can come in handy though, examples:
 
 Wrong:
 
-    if ($forum) ...
+	if ($forum) ...
 
 Right:
 
-    if (isset($forum)) ...
+	if (isset($forum)) ...
 
 Also possible:
 if (isset($forum) && $forum == 5)
@@ -375,55 +385,55 @@ Switch/case code blocks can get a bit long sometimes. To have some level of noti
 
 Wrong:
 
-    switch ($mode)
-    {
-        case 'mode1':
-            // I am doing something here
-            break;
-        case 'mode2':
-            // I am doing something completely different here
-            break;
-    }
+	switch ($mode)
+	{
+		case 'mode1':
+			// I am doing something here
+			break;
+		case 'mode2':
+			// I am doing something completely different here
+			break;
+	}
 
 Good:
 
-    switch ($mode)
-    {
-        case 'mode1':
-            // I am doing something here
-        break;
+	switch ($mode)
+	{
+		case 'mode1':
+			// I am doing something here
+		break;
 
-        case 'mode2':
-            // I am doing something completely different here
-        break;
+		case 'mode2':
+			// I am doing something completely different here
+		break;
 
-        default:
-            // Always assume that a case was not caught
-        break;
-    }
+		default:
+			// Always assume that a case was not caught
+		break;
+	}
 
 Also good, if you have more code between the case and the break
 
-    switch ($mode)
-    {
-        case 'mode1':
+	switch ($mode)
+	{
+		case 'mode1':
 
-            // I am doing something here
+			// I am doing something here
 
-        break;
+		break;
 
-        case 'mode2':
+		case 'mode2':
 
-            // I am doing something completely different here
+			// I am doing something completely different here
 
-        break;
+		break;
 
-        default:
+		default:
 
-            // Always assume that a case was not caught
+			// Always assume that a case was not caught
 
-        break;
-    }
+		break;
+	}
 
 Even if the break for the default case is not needed, it is sometimes better to include it just for readability and completeness.
 
@@ -431,20 +441,20 @@ If no break is intended, please add a comment instead. An example:
 
 Example with no break
 
-    switch ($mode)
-    {
-        case 'mode1':
-            // I am doing something here
-        // no break here
+	switch ($mode)
+	{
+		case 'mode1':
+			// I am doing something here
+		// no break here
 
-        case 'mode2':
-            // I am doing something completely different here
-        break;
+		case 'mode2':
+			// I am doing something completely different here
+		break;
 
-        default:
-            // Always assume that a case was not caught
-        break;
-    }
+		default:
+			// Always assume that a case was not caught
+		break;
+	}
 
 ## Optimizations
 
@@ -453,17 +463,17 @@ Always try to optimize your loops if operations are going on at the comparing pa
 
 Bad, on every iteration the sizeof function is called
 
-    for ($i = 0; $i < sizeof($postData); $i++)
-    {
-        doSomething();
-    }
+	for ($i = 0; $i < sizeof($postData); $i++)
+	{
+		doSomething();
+	}
 
 Good, you are able to assign the (not changing) result within the loop itself
 
-    for ($i = 0, $size = sizeof($postData); $i < $size; $i++)
-    {
-        doSomething();
-    }
+	for ($i = 0, $size = sizeof($postData); $i < $size; $i++)
+	{
+		doSomething();
+	}
 
 ### Use of in_array()
 Try to avoid using `in_array()` on huge arrays, and try not to place them into loops if the array to check consists of more than 20 entries. `in_array()` can be very time consuming and uses a lot of cpu processing time. For little checks it is not noticable, but if checked against a huge array within a loop those checks alone can take a lot of time. If you need this functionality, try using isset() on the arrays keys instead. You can shift the values into keys and vice versa. A call to `isset($array[$var])` is a lot faster than `in_array($var, array_keys($array))` for example.
